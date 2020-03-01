@@ -1,0 +1,28 @@
+import requests
+import json
+from urllib.parse import quote
+import datetime
+
+def weather_func():
+    t = datetime.datetime.now()
+    citycode = quote('南宁')
+    cityname = '南宁'
+    url = ('http://wthrcdn.etouch.cn/weather_mini?city=%s' % citycode)
+    weather = requests.get(url)
+    weather_j = json.loads(weather.text)
+    result = weather_j['data']['forecast']
+    s='%s %s年%s月%s \n天气：%s\n温度：%s %s' % (cityname,t.year,t.month,result[0]['date'],result[0]['type'],result[0]['low'],result[0]['high'])
+    return s
+
+def wxwork():
+    url = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=c6a4aa68-ebcc-4bde-a3e7-b70ffe39daad"
+    s=weather_func()
+    data = {
+      "msgtype": "text",
+      "text": {
+         "content": s
+          }
+       }
+    r = requests.post(url,json=data)
+
+wxwork() #向企业微信机器人发送信息
