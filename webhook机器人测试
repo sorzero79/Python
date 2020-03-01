@@ -23,6 +23,6 @@ def wxwork():
          "content": s
           }
        }
-    r = requests.post(url,json=data)
+requests.post(url,json=data)
 
 wxwork() #向企业微信机器人发送信息
