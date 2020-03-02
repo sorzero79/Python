@@ -15,7 +15,7 @@ def weather_func():
     return s
 
 def wxwork():
-    url = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=c6a4aa68-ebcc-4bde-a3e7-b70ffe39daad"
+    url = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=7f8990a0-1e67-4ea8-b42c-ac2cecedfe19"
     s=weather_func()
     data = {
       "msgtype": "text",
